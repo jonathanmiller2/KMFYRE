@@ -4,7 +4,7 @@ import ceom.flux.views
 
 
 urlpatterns = [
-    path('/', ceom.flux.views.index),
+    path('', ceom.flux.views.index),
 
     
 ]
