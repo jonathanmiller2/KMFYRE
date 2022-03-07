@@ -8,11 +8,12 @@ COPY . .
 WORKDIR /code/app
 
 RUN apt-get update
-RUN apt-get install binutils gettext libgettextpo-dev libproj-dev gdal-bin -y
+RUN apt-get install binutils gettext libgettextpo-dev libproj-dev gdal-bin netcat -y
 
 #Install dependencies
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
 #Run entrypoint.sh
+RUN chmod +x /code/app/entrypoint.sh
 ENTRYPOINT ["/code/app/entrypoint.sh"]
