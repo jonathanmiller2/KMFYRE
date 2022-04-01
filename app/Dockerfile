@@ -1,5 +1,7 @@
 FROM python:3
 
+RUN echo 'got here'
+
 ENV PYTHONUNBUFFERED 1
 
 #Create and cd into /code/ on the container, then copy all of the files in the same directory as this Dockerfile from the normal filesystem into /code/ on the container
