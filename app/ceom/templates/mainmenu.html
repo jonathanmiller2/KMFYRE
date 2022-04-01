@@ -1,0 +1,229 @@
+{% load i18n %}
+<style>
+
+	#menu-home > a:hover {
+		color: #009933;
+		font-weight:bold;
+		transition:all 0.2s;
+	}
+	#menu-about > a:hover {
+		color: #00688B;
+		font-weight:bold;
+		transition:all 0.2s;
+	}
+	#menu-photos > a:hover {
+		color: 	#99993D;
+		font-weight:bold;
+		transition:all 0.2s;
+	}
+	#menu-vis > a:hover {
+		color: #008AE6;
+		font-weight:bold;
+		transition:all 0.2s;
+	}
+	#menu-tropomi > a:hover {
+		color: #006994;
+		font-weight:bold;
+		transition:all 0.2s;
+	}
+	#menu-geohealth > a:hover {
+		color: #FF6666;
+		font-weight:bold;
+		transition:all 0.2s;
+	}
+	#menu-outreach > a:hover {
+		color: #19D1A3;
+		font-weight:bold;
+		transition:all 0.2s;
+	}
+	#menu-poi > a:hover {
+		color: 	#D17519;
+		font-weight:bold;
+		transition:all 0.2s;
+	}
+	#menu-account > a:hover {
+		color: #8A8AE6;
+		font-weight:bold;
+		transition:all 0.2s;
+	}
+	#menu-inventory > a:hover {
+		color: #8A8AE6;
+		font-weight:bold;
+		transition:all 0.2s;
+	}
+	#menu-water > a:hover {
+		color: #006994;
+		font-weight:bold;
+		transition:all 0.2s;
+	}
+	
+
+	.navbar {
+		background-color: #f3f3f3;
+		border-bottom: 1px solid #d7d7d7;
+		box-shadow: 5px 0px 3px #d7d7d7
+	}
+
+	.active {
+		background-color: #e5e5e5;
+		box-shadow: inset 0px 0px 3px #d7d7d7;
+	}
+
+	
+	#mobile-nav-btn {
+		width: 75px;
+	}
+
+	@media screen and (min-width: 1400px) {
+		#mobile-navbar {
+			display: none;
+		}
+
+		.main-menu-link {
+			color: #777777;
+			width: 123px;
+			text-align: center;
+		}
+	}
+
+	@media screen and (max-width: 1400px) {
+		#full-navbar {
+			display: none;
+		}
+
+		.main-menu-link {
+			color: #777777;
+			margin-left: 1em;
+		}
+
+		.nav-item {
+			border-radius: 4px;
+		}
+	}
+	
+</style>
+
+<!-- TODO: Fix issues with buttons being too small to hold text in other languages. Also make sure translations are correct, of course.-->
+
+<nav id="full-navbar" class="navbar navbar-expand mb-4 animate__animated animate__fadeIn">
+	<ul class="navbar-nav ml-5 mr-auto">
+		<li id="menu-home" class="nav-item{% if '/' == request.path %} active{% endif %}">
+			<a class="nav-link main-menu-link" href="/">
+				<span class="fas fa-home"></span>
+				{% trans "Home" %}
+			</a>
+		</li>
+		<li id="menu-about" class="nav-item{% if '/aboutus/' in request.path %} active{% endif %}">
+			<a class="nav-link main-menu-link" href="/aboutus/news/">
+				<span class="fas fa-info-circle"></span> 
+				{% trans "About Us" %} 
+			</a>
+		</li>
+		<li id="menu-photos" class="nav-item{% if '/photos/' in request.path and '/outreach/' not in request.path %} active{% endif %}">
+			<a class="nav-link main-menu-link" href="/photos/">
+				<span class="fas fa-camera"></span> 
+				{% trans "Photo" %}
+			</a>
+		</li>
+		<!--<li id="menu-inventory" {% if '/inventory/' in request.path %}class='active'{% endif %}><a href="/inventory/"><span class="icon-list-ul navbar-icon"></span> {% trans "Datasets" %} </a></li>-->
+		<li id="menu-vis" class="nav-item{% if '/modis/' in request.path %} active{% endif %}">
+			<a class="nav-link main-menu-link" href="/modis/visualization/">
+				<span class="fas fa-globe-americas"></span> 
+				{% trans "MODIS" %}
+			</a>
+		</li>
+		<li id="menu-tropomi" class="nav-item{% if '/tropomi/' in request.path %} active{% endif %}">
+			<a class="nav-link main-menu-link" href="/tropomi/">
+				<span class="fas fa-globe-americas"></span> 
+				{% trans "TROPOMI" %}
+			</a>
+		</li>
+		<li id="menu-geohealth" class="nav-item{% if '/geohealth/' in request.path %} active{% endif %}">
+			<a class="nav-link main-menu-link" href="/geohealth/">
+				<span class="fas fa-heartbeat"></span>
+				 {% trans "GeoHealth" %}
+			</a>
+		</li>
+		<li id="menu-outreach" class="nav-item{% if '/outreach/' in request.path %} active{% endif %}">
+			<a class="nav-link main-menu-link" href="/outreach/gisday/">
+				<span class="fas fa-rss"></span> 
+				{% trans "Outreach" %}
+			</a>
+		</li>
+		<li id="menu-water" class="nav-item{% if '/water/' in request.path %} active{% endif %}">
+			<a class="nav-link main-menu-link" href="/water/">
+				<span class="fa fa-tint"></span>
+				{% trans "Water" %}
+			</a>
+		</li>
+		<li id="menu-account" class="nav-item{% if '/accounts/' in request.path %} active{% endif %}">
+			<a class="nav-link main-menu-link" href="/accounts/">
+				<span class="fa fa-user"></span> 
+				{% trans "Account" %}
+			</a>
+		</li>
+	</ul>
+   
+</nav>
+
+<nav id="mobile-navbar" class="flex-column card bg-light mb-4 animate__animated animate__fadeIn">
+	<button id="mobile-nav-btn" class="btn btn-dark ml-auto mr-5 my-2" type="button" data-toggle="collapse" data-target="#mobile-nav-body" aria-expanded="false" aria-controls="mobile-nav-body">Menu</button>
+	<ul id="mobile-nav-body" class="navbar-nav mx-5 mt-0 collapse">
+		<li id="menu-home" class="nav-item{% if '/' == request.path %} active{% endif %}">
+			<a class="nav-link main-menu-link" href="/">
+				<span class="fas fa-home"></span>
+				{% trans "Home" %}
+			</a>
+		</li>
+		<li id="menu-about" class="nav-item{% if '/aboutus/' in request.path %} active{% endif %}">
+			<a class="nav-link main-menu-link" href="/aboutus/news">
+				<span class="fas fa-info-circle"></span> 
+				{% trans "About Us" %} 
+			</a>
+		</li>
+		<li id="menu-photos" class="nav-item{% if '/photos/' in request.path and '/outreach/' not in request.path %} active{% endif %}">
+			<a class="nav-link main-menu-link" href="/photos/">
+				<span class="fas fa-camera"></span> 
+				{% trans "Photo" %} 
+			</a>
+		</li>
+		<!--<li id="menu-inventory" {% if '/inventory/' in request.path %}class='active'{% endif %}><a href="/inventory/"><span class="icon-list-ul navbar-icon"></span> {% trans "Datasets" %} </a></li>-->
+		<li id="menu-vis" class="nav-item{% if '/modis/' in request.path %} active{% endif %}">
+			<a class="nav-link main-menu-link" href="/modis/visualization/">
+				<span class="fas fa-globe-americas"></span> 
+				{% trans "MODIS" %}
+			</a>
+		</li>
+		<li id="menu-tropomi" class="nav-item{% if '/tropomi/' in request.path %} active{% endif %}">
+			<a class="nav-link main-menu-link" href="/modis/visualization/">
+				<span class="fas fa-globe-americas"></span> 
+				{% trans "TROPOMI" %}
+			</a>
+		</li>
+		<li id="menu-geohealth" class="nav-item{% if '/geohealth/' in request.path %} active{% endif %}">
+			<a class="nav-link main-menu-link" href="/geohealth/">
+				<span class="fas fa-heartbeat"></span>
+				 {% trans "GeoHealth" %}
+			</a>
+		</li>
+		<li id="menu-gis" class="nav-item{% if '/outreach/' in request.path %} active{% endif %}">
+			<a class="nav-link main-menu-link" href="/outreach/gisday/">
+				<span class="fas fa-rss"></span> 
+				{% trans "Outreach" %}
+			</a>
+		</li>
+		<li id="menu-water" class="nav-item{% if '/water/' in request.path %} active{% endif %}">
+			<a class="nav-link main-menu-link" href="/water/">
+				<span class="fa fa-tint"></span>
+				{% trans "Water" %}
+			</a>
+		</li>
+		<li id="menu-account" class="nav-item{% if '/accounts/' in request.path %} active{% endif %}">
+			<a class="nav-link main-menu-link" href="/accounts/">
+				<span class="fa fa-user"></span> 
+				{% trans "Account" %}
+			</a>
+		</li>
+
+	</ul>
+</nav>

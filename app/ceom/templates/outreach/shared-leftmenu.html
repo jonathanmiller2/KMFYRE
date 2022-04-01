@@ -1,0 +1,66 @@
+<li class='leftmenu-category nav-header'>
+	GIS Day
+</li>
+<li>
+	<a href="/outreach/gisday/overview/" id="news" class="btn btn-light btn-block rounded-0 p-0">
+		<p class="leftmenu-text ml-4 m-0 text-left">Overview </p>
+	</a>
+<li>
+
+{% for year in available_years %}
+
+<li>
+	<a href="/outreach/gisday/{{year.date|date:'Y'}}/" data-toggle="collapse" data-target="#Y{{year.date|date:'Y'}}" class="btn btn-light btn-block rounded-0 p-0">
+		<p class="leftmenu-text ml-4 m-0 text-left">GIS Day {{year.date|date:'Y'}}</p>
+	</a>
+
+	<ul id="Y{{year.date|date:'Y'}}" style="list-style-type: none;" class="collapse {% if year.date|date:'Y' in request.path  %}show{% endif %}">
+		{% if not year.summary_hidden%}
+		<li><a class="leftmenu-text" href="/outreach/gisday/{{year.date|date:'Y'}}/summary">Summary</a></li>
+		{% endif %}
+		<li><a class="leftmenu-text" href="/outreach/gisday/{{year.date|date:'Y'}}/announcements">Announcements</a></li>
+		<li><a class="leftmenu-text" href="/outreach/gisday/{{year.date|date:'Y'}}/aboutus/">Committee</a></li>
+		{% if not year.agenda_hidden%}
+		<li><a class="leftmenu-text" href="/outreach/gisday/{{year.date|date:'Y'}}/agenda/">Agenda</a></li>
+		{% endif %}
+		<li><a class="leftmenu-text" href="/outreach/gisday/{{year.date|date:'Y'}}/logistics/">Logistics</a></li>
+		{% if not year.photo_contest_hidden%}
+		<li><a class="leftmenu-text" href="/outreach/gisday/{{year.date|date:'Y'}}/photo-contest/">Photo Contest</a></li>
+		{% endif %}
+		{% if not year.poster_contest_hidden%}
+		<li><a class="leftmenu-text" href="/outreach/gisday/{{year.date|date:'Y'}}/poster-contest/">Poster Registration</a></li>
+		{% endif %}
+		<li><a class="leftmenu-text" href="/outreach/gisday/{{year.date|date:'Y'}}/booth/">Exhibitor Registration</a></li>
+		<li><a class="leftmenu-text" href="/outreach/gisday/{{year.date|date:'Y'}}/guests/">Visitor Registration</a></li>
+		<li><a class="leftmenu-text" href="/outreach/gisday/{{year.date|date:'Y'}}/volunteer/">Volunteer Registration</a></li>
+		<li><a class="leftmenu-text" href="/outreach/gisday/{{year.date|date:'Y'}}/sponsors/">Sponsors</a></li>
+		{% if not year.photo_gallery_hidden%}
+		<li><a class="leftmenu-text" href="/outreach/gisday/{{year.date|date:'Y'}}/photo-gallery">Photo gallery</a></li>
+		{% endif %}
+		{% if not year.image_gallery_hidden%}
+		<li><a class="leftmenu-text" href="/outreach/gisday/{{year.date|date:'Y'}}/image-gallery">Image gallery</a></li>
+		{% endif %}
+		{% if year.survey_open %}
+		<li><a class="leftmenu-text" href="/outreach/gisday/{{year.date|date:'Y'}}/survey/">Survey</a></li>
+		{% endif %}
+	</ul>
+</li>
+{% endfor %}
+<li class="leftmenu-category nav-header">
+    Workshop
+</li>
+<li> 
+    <a href='/outreach/workshops/overview/' class="btn btn-light btn-block rounded-0 p-0">
+        <p class="leftmenu-text mx-4 m-0 text-left">Overview</p>
+    </a>
+</li>
+<li> 
+    <a href='/outreach/workshops/current/' class="btn btn-light btn-block rounded-0 p-0">
+        <p class="leftmenu-text mx-4 m-0 text-left">Current Workshops</p>
+    </a>
+</li>
+<li> 
+    <a href='/outreach/workshops/past/' class="btn btn-light btn-block rounded-0 p-0">
+        <p class="leftmenu-text mx-4 m-0 text-left">Past Workshops</p>
+    </a>
+</li>
